@@ -1,5 +1,5 @@
 import { ProjectForm,CategoryForm } from '@common.types';
-import { createUserMutation,createCategoryMutation, getUserQuery, createProjectMutation, projectsQuery, getProjectByIdQuery, getProjectsOfUserQuery, deleteProjectMutation, updateProjectMutation } from '@graphql';
+import { categoryQuery,getCategoryByIdQuery,updateCategoryMutation, createUserMutation,createCategoryMutation, getUserQuery, createProjectMutation, projectsQuery, getProjectByIdQuery, getProjectsOfUserQuery, deleteProjectMutation, updateProjectMutation } from '@graphql';
 import  { GraphQLClient} from 'graphql-request';
 
 
@@ -105,17 +105,30 @@ export const createCategoryNew = async(form:CategoryForm, creatorId: string, tok
 }
 
 
-
 // get all projects
-export const fetchAllProjects = async (category = "One Piece", endcursor:string) => {
+export const fetchAllProjects = async (category:string, endcursor:string) => {
     client.setHeader('x-api-key', apiKey);  
     return makeGraphQLRequest(projectsQuery, {category,endcursor});
 }
+
+export const fecthAllCategories = async () => {
+    client.setHeader('x-api-key', apiKey);  
+    return makeGraphQLRequest(categoryQuery);
+}
+
+
 
 //get projects details
 export const getProjectDetails = (id:string) => {
     client.setHeader('x-api-key', apiKey);
     return makeGraphQLRequest(getProjectByIdQuery, {id})
+
+}
+
+//get category details
+export const getCategoryDetails = (id:string) => {
+    client.setHeader('x-api-key', apiKey);
+    return makeGraphQLRequest(getCategoryByIdQuery, {id})
 
 }
 
@@ -163,6 +176,19 @@ export const updateProject = async (form: ProjectForm, projectId:string, token: 
   
     client.setHeader("Authorization", `Bearer ${token}`);
     return makeGraphQLRequest(updateProjectMutation, variables);
+  };
+
+export const updateCategory = async (form: CategoryForm, categoryId:string, token: string) => {
+
+    let categoryForm = {...form};
+    const variables = {
+        id : categoryId,
+        input : categoryForm,
+    }
+
+  
+    client.setHeader("Authorization", `Bearer ${token}`);
+    return makeGraphQLRequest(updateCategoryMutation, variables);
   };
 
 

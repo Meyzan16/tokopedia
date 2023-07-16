@@ -82,3 +82,8 @@ export interface CategoryForm {
   title: string;
   description: string;
 }
+
+export interface CategoryInterface {
+  title: string;
+  description: string;
+}

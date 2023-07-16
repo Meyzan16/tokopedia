@@ -9,8 +9,8 @@ import LoadMore from "@components/LoadMore";
 
 
 type SearchParams = {
-    category?: string;
-    endcursor:string;
+    category: string ;
+    endcursor:string ;
 }
 
 type Props = {
@@ -97,5 +97,7 @@ const Home = async ({searchParams: { category,endcursor }}: Props) => {
         </section>
     )
 }
+
+
 
 export default Home;

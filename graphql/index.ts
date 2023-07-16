@@ -58,7 +58,21 @@ export const createCategoryMutation = `
 	}
 `;
 
-
+export const updateCategoryMutation = `
+	mutation UpdateCategory($id: ID!, $input: CategoryUpdateInput!) {
+		categoryUpdate(by: { id: $id }, input: $input) {
+			category {
+				id
+				title
+				description
+				createdBy {
+					email
+					name
+				}
+			}
+		}
+	}
+`;
 
 export const updateProjectMutation = `
 	mutation UpdateProject($id: ID!, $input: ProjectUpdateInput!) {
@@ -117,6 +131,20 @@ export const projectsQuery = `
   }
 `;
 
+export const categoryQuery = `
+  query CategoryCollection {
+    categoryCollection(first: 20) {
+      edges {
+        node {
+          id
+          title
+          description
+        }
+      }
+    }
+  }
+`
+
 export const getProjectByIdQuery = `
   query GetProjectById($id: ID!) {
     project(by: { id: $id }) {
@@ -128,6 +156,22 @@ export const getProjectByIdQuery = `
       genre
       episode
       category
+      createdBy {
+        id
+        name
+        email
+        avatarUrl
+      }
+    }
+  }
+`;
+
+export const getCategoryByIdQuery = `
+  query GetCategoryById($id: ID!) {
+    category(by: { id: $id }) {
+      id
+      title
+      description
       createdBy {
         id
         name

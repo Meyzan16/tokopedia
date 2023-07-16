@@ -57,10 +57,10 @@ const ProfileMenu = ({ session }: { session: SessionInterface }) => {
 
                         <div className="flex flex-col gap-3 pt-10 items-start w-full">
                             <Menu.Item>
-                                <Link href={`/profile/${session?.user?.id}`} className="text-sm">Work Preferences</Link>
+                                <Link href={`/profile/${session?.user?.id}`} className="text-sm">Collection Anime</Link>
                             </Menu.Item>
                             <Menu.Item>
-                                <Link href={`/profile/${session?.user?.id}`} className="text-sm">Settings</Link>
+                                <Link href={`/profile/${session?.user?.id}`} className="text-sm">Setting Collection</Link>
                             </Menu.Item>
                             <Menu.Item>
                                 <Link href={`/profile/${session?.user?.id}`} className="text-sm">Profile</Link>

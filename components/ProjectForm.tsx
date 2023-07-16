@@ -20,7 +20,6 @@ type Props = {
 }
 
 
-
 const ProjectForm = ({type , session, project} : Props) => {
 
     const router = useRouter();

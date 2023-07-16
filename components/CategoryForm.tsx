@@ -1,7 +1,6 @@
 "use client"
 
 import { SessionInterface,CategoryInterface } from "@common.types"
-import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 import FormField from "./FormField";
 import Button from "./Button";
@@ -10,13 +9,13 @@ import { fetchToken } from "@lib/actions";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast } from 'react-hot-toast'
+import { updateCategory } from "@lib/actions";
 
 type Props = {
   type: string,
   session: SessionInterface;
   category?: CategoryInterface;
 }
-
 
 
 const CategoryForm = ({type , session,category} : Props) => {
@@ -44,10 +43,22 @@ const CategoryForm = ({type , session,category} : Props) => {
         //create a new category
         await createCategoryNew(form, session?.user?.id, token);
         
-        // router.push(`/profile/${session?.user?.id}`);
-        router.push('/');
+        router.push(`/profile/${session?.user?.id}`);
+        // router.push('/');
         toast.success(`a new collection successfully`);
       }
+
+      if(type === 'edit') {
+        //edit a new collection
+        await updateCategory(form, category?.id as string, token);
+
+        router.push('/');
+
+        // router.push('/');
+        toast.success(`updated collection successfully`);
+      }
+
+
 
     } catch (error) {
       console.log(error);
