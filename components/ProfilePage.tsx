@@ -85,6 +85,7 @@ const ProfilePage = async ({ user }: Props) =>
         </section>
 
         <section className='flexStart flex-col lg:mt-28 mt-16 w-full'>
+            <p className="w-full text-left text-lg font-semibold">Recent Category Collection</p>
                 <div className='flexBetween w-full gap-5 flew-wrap'>
                         <ul className='flex gap-2 overflow-auto'>
                             {
@@ -111,7 +112,7 @@ const ProfilePage = async ({ user }: Props) =>
                 </div>
         </section>
 
-        <section className="flexStart flex-col lg:mt-16 mt-16 w-full">
+        <section className="flexStart flex-col lg:mt-12 mt-16 w-full">
             <p className="w-full text-left text-lg font-semibold">Recent Collection Anime</p>
 
             
