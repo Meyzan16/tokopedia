@@ -31,7 +31,8 @@ const ProjectActions =  ( { session,  projectId , projectName }: Props) => {
 
             await deleteProject(projectId,token);
 
-            router.push(`/profile/${session?.user?.id}`);
+            router.push('/');
+            // router.push(`/profile/${session?.user?.id}`);
 
 
 
