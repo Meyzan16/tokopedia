@@ -9,12 +9,12 @@ import LoadMore from "@components/LoadMore";
 
 
 type SearchParams = {
-    category?: string | null;
-    endcursor?: string | null;
+    category?:string | null;
+    endcursor?:string | null;
 }
 
 type Props = {
-    searchParams: SearchParams;
+    searchParams: SearchParams ;
 }
 
 type ProjectsSearch = {
@@ -33,14 +33,15 @@ export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 export const revalidate = 0;
 
-// {searchParams: { category,endcursor }}: Props
-const Home = async () => {
+const Home = async ({searchParams: { category,endcursor }}: Props) => {
 
-            // const data = await fetchAllProjects(category,endcursor) as ProjectsSearch;
-            const data = await fetchAllProjects() as ProjectsSearch;
+            const data = await fetchAllProjects(category,endcursor) as ProjectsSearch;
 
             const projectsToDisplay = data?.projectSearch?.edges || [];
         
+            const pagination = data?.projectSearch?.pageInfo;
+
+
             if(projectsToDisplay.length === 0) {
                 
                 return (
@@ -56,9 +57,8 @@ const Home = async () => {
         
             }
 
-            const pagination = data?.projectSearch?.pageInfo;
 
-            console.log(projectsToDisplay);
+            // console.log(projectsToDisplay);
 
     return (
         <section className="flex-start flex-col paddings mb-16">
@@ -92,8 +92,6 @@ const Home = async () => {
                 endCursor={pagination.endCursor}
                 hasPreviousPage={pagination.hasPreviousPage}
                 hasNextPage={pagination.hasNextPage}
-
-
             />
 
         </section>
