@@ -21,7 +21,7 @@ const Project = g.model('Project', {
   episode: g.string(),
   liveSiteUrl: g.string(),
   category: g.string().search(),
-  categoryBy: g.relation(() => Category),  
+  // categoryBy: g.relation(() => Category),  
   createdBy: g.relation(() => User),  
 }).auth((rules) => {
   rules.public().read()
