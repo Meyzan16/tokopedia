@@ -16,8 +16,6 @@ const Categories = () => {
 
     const handleTags = (filter:string) => {
         router.push(`${pathNam}?category=${filter}`);
-        
-
     }
 
 
