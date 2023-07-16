@@ -9,8 +9,8 @@ import LoadMore from "@components/LoadMore";
 
 
 type SearchParams = {
-    category?:string | null;
-    endcursor?:string | null;
+    category:string;
+    endcursor:string;
 }
 
 type Props = {
