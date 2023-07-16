@@ -33,9 +33,11 @@ export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 export const revalidate = 0;
 
-const Home = async ({searchParams: { category,endcursor }}: Props) => {
+// {searchParams: { category,endcursor }}: Props
+const Home = async () => {
 
-            const data = await fetchAllProjects(category,endcursor) as ProjectsSearch;
+            // const data = await fetchAllProjects(category,endcursor) as ProjectsSearch;
+            const data = await fetchAllProjects() as ProjectsSearch;
 
             const projectsToDisplay = data?.projectSearch?.edges || [];
         
