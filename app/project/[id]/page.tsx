@@ -1,12 +1,12 @@
-import { ProjectInterface } from '@/common.types';
-import { getProjectDetails } from '@/lib/actions';
-import { getCurrentUser } from '@/lib/session'
+import { ProjectInterface } from '@common.types';
+import { getProjectDetails } from '@lib/actions';
+import { getCurrentUser } from '@lib/session'
 import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
-import Modal from "@/components/Modal";
-import RelatedProjects from '@/components/RelatedProjects';
-import ProjectActions from '@/components/ProjectActions';
+import Modal from "@components/Modal";
+import RelatedProjects from '@components/RelatedProjects';
+import ProjectActions from '@components/ProjectActions';
 
 const Project = async ({params : {id}} : {params:{id:string}} ) => {
     const session =  await  getCurrentUser();

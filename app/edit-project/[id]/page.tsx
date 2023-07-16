@@ -1,12 +1,12 @@
 
 
 import React from 'react'
-import Modal from '@/components/Modal';
-import ProjectForm from '@/components/ProjectForm';
-import { getCurrentUser } from '@/lib/session';
+import Modal from '@components/Modal';
+import ProjectForm from '@components/ProjectForm';
+import { getCurrentUser } from '@lib/session';
 import { redirect } from 'next/navigation';
-import { getProjectDetails } from '@/lib/actions';
-import { ProjectInterface } from '@/common.types';
+import { getProjectDetails } from '@lib/actions';
+import { ProjectInterface } from '@common.types';
 
 const EditProject = async ({params: {id}} : {params: {id:string}} ) => {
   const session = await getCurrentUser();

@@ -3,11 +3,10 @@
 import React, {useState} from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { deleteProject, fetchToken,getProjectDetails } from '@/lib/actions'
+import { deleteProject, fetchToken,getProjectDetails } from '@lib/actions'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-hot-toast'
-import { SessionInterface } from "@/common.types";
-import { ProjectInterface } from '@/common.types'
+import { SessionInterface } from "@common.types";
 
 
 type Props = {

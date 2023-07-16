@@ -1,14 +1,12 @@
 "use client"
 
-import { SessionInterface,CategoryInterface } from "@/common.types"
+import { SessionInterface,CategoryInterface } from "@common.types"
 import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 import FormField from "./FormField";
-import { categoryFilters, genreFilters } from "@/constants";
-import CustomMenu from "./CustomMenu";
 import Button from "./Button";
-import { createCategoryNew } from "@/lib/actions";
-import { fetchToken } from "@/lib/actions";
+import { createCategoryNew } from "@lib/actions";
+import { fetchToken } from "@lib/actions";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast } from 'react-hot-toast'

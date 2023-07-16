@@ -1,9 +1,9 @@
 
 
 import React from 'react'
-import Modal from '@/components/Modal';
-import ProjectForm from '@/components/ProjectForm';
-import { getCurrentUser } from '@/lib/session';
+import Modal from '@components/Modal';
+import ProjectForm from '@components/ProjectForm';
+import { getCurrentUser } from '@lib/session';
 import { redirect } from 'next/navigation';
 
 const CreateProject = async () => {

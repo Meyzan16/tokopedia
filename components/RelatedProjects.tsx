@@ -1,6 +1,6 @@
-import { UserProfile } from "@/common.types";
-import { getUserProjects } from "@/lib/actions";
-import { ProjectInterface } from "@/common.types";
+import { UserProfile } from "@common.types";
+import { getUserProjects } from "@lib/actions";
+import { ProjectInterface } from "@common.types";
 import Link from "next/link";
 import Image from "next/image";
 

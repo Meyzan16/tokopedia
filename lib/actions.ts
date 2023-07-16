@@ -1,5 +1,5 @@
-import { ProjectForm,CategoryForm } from '@/common.types';
-import { createUserMutation,createCategoryMutation, getUserQuery, createProjectMutation, projectsQuery, getProjectByIdQuery, getProjectsOfUserQuery, deleteProjectMutation, updateProjectMutation } from '@/graphql';
+import { ProjectForm,CategoryForm } from '@common.types';
+import { createUserMutation,createCategoryMutation, getUserQuery, createProjectMutation, projectsQuery, getProjectByIdQuery, getProjectsOfUserQuery, deleteProjectMutation, updateProjectMutation } from '@graphql';
 import  { GraphQLClient} from 'graphql-request';
 
 

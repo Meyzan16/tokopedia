@@ -1,8 +1,8 @@
 import React from 'react'
-import { getUserProjects } from '@/lib/actions'
+import { getUserProjects } from '@lib/actions'
 import Image from 'next/image'
-import { UserProfile } from '@/common.types'
-import ProfilePage from '@/components/ProfilePage'
+import { UserProfile } from '@common.types'
+import ProfilePage from '@components/ProfilePage'
 
 type Props = {
     params: {
