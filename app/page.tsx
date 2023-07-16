@@ -9,7 +9,7 @@ import LoadMore from "@components/LoadMore";
 
 
 type SearchParams = {
-    category?: '';
+    category?:string | null;
     endcursor?:string | null;
 }
 
