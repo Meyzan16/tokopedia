@@ -6,6 +6,7 @@ const User = g.model('User', {
   email: g.string().unique(),
   avatarUrl: g.string(),
   description: g.string().optional(),
+  //@ts-ignore
   projects: g.relation(() => Project).list().optional(),  
 }).auth((rules) => {
   rules.public().read()
