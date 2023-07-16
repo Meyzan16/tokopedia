@@ -107,7 +107,7 @@ export const createCategoryNew = async(form:CategoryForm, creatorId: string, tok
 
 
 // get all projects
-export const fetchAllProjects = async (category = '', endcursor?:string|null) => {
+export const fetchAllProjects = async (category?:string|null, endcursor?:string|null) => {
     client.setHeader('x-api-key', apiKey);  
     return makeGraphQLRequest(projectsQuery, {category,endcursor});
 }

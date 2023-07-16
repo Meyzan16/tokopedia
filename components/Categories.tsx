@@ -9,14 +9,14 @@ import React from 'react'
 const Categories = () => {
 
     const router = useRouter();
-    const pathNam = usePathname();
+    const pathName = usePathname();
     const searchParams = useSearchParams();
 
-    const category = searchParams.get('category');
+    const category = searchParams.get("category");
 
-    const handleTags = (filter:string) => {
-        router.push(`${pathNam}?category=${filter}`);
-    }
+    const handleTags = (filter: string) => {
+      router.push(`${pathName}?category=${filter}`);
+    };
 
 
 
