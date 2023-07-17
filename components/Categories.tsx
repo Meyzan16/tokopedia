@@ -4,7 +4,6 @@ import { usePathname, useRouter , useSearchParams } from 'next/navigation';
 import { fecthAllCategories } from "@lib/actions";
 import { CategoryInterface } from '@common.types';
 
-import { categoryFilters } from '@constants';
 
 type Category = {
   categoryCollection: {

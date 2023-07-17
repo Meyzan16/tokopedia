@@ -7,6 +7,8 @@ const User = g.model('User', {
   avatarUrl: g.string(),
   description: g.string().optional(),
   //@ts-ignore
+  category: g.relation(() => Category).list().optional(),  
+  //@ts-ignore
   projects: g.relation(() => Project).list().optional(),  
 }).auth((rules) => {
   rules.public().read()
@@ -21,7 +23,6 @@ const Project = g.model('Project', {
   episode: g.string(),
   liveSiteUrl: g.string(),
   category: g.string().search(),
-  // categoryBy: g.relation(() => Category),  
   createdBy: g.relation(() => User),  
 }).auth((rules) => {
   rules.public().read()

@@ -63,6 +63,7 @@ const Project = async ({params : {id}} : {params:{id:string}} ) => {
                             projectId={projectDetails?.id} />
                     </div>
                 )}
+                
             </section>
 
             <section className="mt-14">

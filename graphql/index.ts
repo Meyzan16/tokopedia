@@ -97,6 +97,14 @@ export const deleteProjectMutation = `
     }
   }
 `;
+
+export const deleteCategoryMutation = `
+  mutation DeleteCategory($id: ID!) {
+    categoryDelete(by: { id: $id }) {
+      deletedId
+    }
+  }
+`;
       
 
 
@@ -199,6 +207,26 @@ export const getProjectsOfUserQuery = `
             genre
             category
             episode
+          }
+        }
+      }
+    }
+  }
+`;
+export const getCategoryOfUserQuery = `
+  query getUserCategory($id: ID!, $last: Int = 20) {
+    user(by: { id: $id }) {
+      id
+      name
+      email
+      description
+      avatarUrl
+      category(last: $last) {
+        edges {
+          node {
+            id
+            title
+            description
           }
         }
       }

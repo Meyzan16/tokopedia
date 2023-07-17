@@ -41,7 +41,6 @@ const Home = async ({searchParams: { category,endcursor }}: Props) => {
         
             const pagination = data?.projectSearch?.pageInfo;
 
-
             if(projectsToDisplay.length === 0) {
                 
                 return (
@@ -57,7 +56,6 @@ const Home = async ({searchParams: { category,endcursor }}: Props) => {
         
             }
 
-
             // console.log(projectsToDisplay);
 
     return (
@@ -68,20 +66,20 @@ const Home = async ({searchParams: { category,endcursor }}: Props) => {
                 {
                     projectsToDisplay.map(
                         ({node}: {node: ProjectInterface}) => 
-                    (
-                        <ProjectCard 
-                            key={node?.id}
-                            id={node?.id}
-                            image={node?.image}
-                            genre={node?.genre}
-                            episode={node?.episode}
-                            title={node?.title}
-                            name={node?.createdBy?.name}
-                            avatarUrl={node?.createdBy?.avatarUrl}
-                            userId={node?.createdBy?.id}
+                        (
+                            <ProjectCard 
+                                key={node?.id}
+                                id={node?.id}
+                                image={node?.image}
+                                genre={node?.genre}
+                                episode={node?.episode}
+                                title={node?.title}
+                                name={node?.createdBy?.name}
+                                avatarUrl={node?.createdBy?.avatarUrl}
+                                userId={node?.createdBy?.id}
 
-                        />
-                    )
+                            />
+                        )
                     )
                 }
 

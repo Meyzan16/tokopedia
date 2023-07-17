@@ -11,6 +11,7 @@ import Link from "next/link";
 import { toast } from 'react-hot-toast'
 import { updateCategory } from "@lib/actions";
 
+
 type Props = {
   type: string,
   session: SessionInterface;
@@ -18,8 +19,8 @@ type Props = {
 }
 
 
-const CategoryForm = ({type , session,category} : Props) => {
-
+const CategoryForm = ({type , session, category} : Props) => {
+  
     const router = useRouter();
   
     const [submitting, setsubmitting] = useState(false);

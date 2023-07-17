@@ -27,17 +27,7 @@ export interface ProjectInterface {
     };
 }
 
-export interface CategoryInterface {
-    title: string;
-    description: string;
-    id: string;
-    createdBy: {
-      name: string;
-      email: string;
-      avatarUrl: string;
-      id: string;
-    };
-}
+
 
 export interface UserProfile {
     id: string;
@@ -45,6 +35,15 @@ export interface UserProfile {
     email: string;
     description: string | null;
     avatarUrl: string;
+    category: {
+      edges: { node: CategoryInterface }[];
+      pageInfo: {
+        hasPreviousPage: boolean;
+        hasNextPage: boolean;
+        startCursor: string;
+        endCursor: string;
+      };
+    };
     projects: {
       edges: { node: ProjectInterface }[];
       pageInfo: {
@@ -84,6 +83,13 @@ export interface CategoryForm {
 }
 
 export interface CategoryInterface {
+  id:string;
   title: string;
   description: string;
+  createdBy: {
+    name: string;
+    email: string;
+    avatarUrl: string;
+    id: string;
+  };
 }

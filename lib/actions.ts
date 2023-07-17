@@ -1,5 +1,5 @@
 import { ProjectForm,CategoryForm } from '@common.types';
-import { categoryQuery,getCategoryByIdQuery,updateCategoryMutation, createUserMutation,createCategoryMutation, getUserQuery, createProjectMutation, projectsQuery, getProjectByIdQuery, getProjectsOfUserQuery, deleteProjectMutation, updateProjectMutation } from '@graphql';
+import { categoryQuery,getCategoryByIdQuery,updateCategoryMutation,deleteCategoryMutation, getCategoryOfUserQuery, createUserMutation,createCategoryMutation, getUserQuery, createProjectMutation, projectsQuery, getProjectByIdQuery, getProjectsOfUserQuery, deleteProjectMutation, updateProjectMutation } from '@graphql';
 import  { GraphQLClient} from 'graphql-request';
 
 
@@ -111,12 +111,6 @@ export const fetchAllProjects = async (category = "One Piece", endcursor:string)
     return makeGraphQLRequest(projectsQuery, {category,endcursor});
 }
 
-export const fecthAllCategories = async () => {
-    client.setHeader('x-api-key', apiKey);  
-    return makeGraphQLRequest(categoryQuery);
-}
-
-
 
 //get projects details
 export const getProjectDetails = (id:string) => {
@@ -125,20 +119,13 @@ export const getProjectDetails = (id:string) => {
 
 }
 
-//get category details
-export const getCategoryDetails = (id:string) => {
-    client.setHeader('x-api-key', apiKey);
-    return makeGraphQLRequest(getCategoryByIdQuery, {id})
-
-}
-
-
+//get user project
 export const getUserProjects = (id:string, last?:number) => {
     client.setHeader('x-api-key', apiKey);
     return makeGraphQLRequest(getProjectsOfUserQuery, {id, last})
 }
 
-
+//deleted project
 export const deleteProject = (id: string, token: string) => {
     client.setHeader('x-api-key', apiKey);
     client.setHeader("Authorization", `Bearer ${token}`);
@@ -178,6 +165,29 @@ export const updateProject = async (form: ProjectForm, projectId:string, token: 
     return makeGraphQLRequest(updateProjectMutation, variables);
   };
 
+
+
+//fetch all caterories
+export const fecthAllCategories = async () => {
+    client.setHeader('x-api-key', apiKey);  
+    return makeGraphQLRequest(categoryQuery);
+}
+
+//get category details
+export const getCategoryDetails = (id:string) => {
+    client.setHeader('x-api-key', apiKey);
+    return makeGraphQLRequest(getCategoryByIdQuery, {id})
+
+}
+
+//get category user
+export const getUserCategory = (id:string, last?:number) => {
+    client.setHeader('x-api-key', apiKey);
+    return makeGraphQLRequest(getCategoryOfUserQuery, {id, last})
+}
+
+
+
 export const updateCategory = async (form: CategoryForm, categoryId:string, token: string) => {
 
     let categoryForm = {...form};
@@ -191,5 +201,11 @@ export const updateCategory = async (form: CategoryForm, categoryId:string, toke
     return makeGraphQLRequest(updateCategoryMutation, variables);
   };
 
+//deleted project
+export const deleteCategory = (id: string, token: string) => {
+    client.setHeader('x-api-key', apiKey);
+    client.setHeader("Authorization", `Bearer ${token}`);
+    return makeGraphQLRequest(deleteCategoryMutation, { id });
+};
 
 

@@ -9,32 +9,48 @@ import Button from "./Button";
 import ProjectCard from './ProjectCard';
 import { usePathname, useRouter , useSearchParams } from 'next/navigation';
 
+
 type Props = {
     user: UserProfile;
+    category: CategoryUser;
 }
 
-type Category = {
-    categoryCollection: {
-      edges: {node: CategoryInterface}[];
+// type Category = {
+//     categoryCollection: {
+//       edges: {node: CategoryInterface}[];
+//     }
+// }
+
+type CategoryUser = {
+    user : {
+        id:string;
+        name:string;
+        email:string;
+        category:{
+            edges: {node: CategoryInterface}[];
+        }
     }
-  }
+}
+  
   
 
-const ProfilePage = async ({ user }: Props) => 
+const ProfilePage = async ({ user,category }: Props) => 
 {
     const router = useRouter();
     const pathName = usePathname();
     const searchParams = useSearchParams();
 
-    const category = searchParams.get("category");
+    const categoryy = searchParams.get("category");
 
-    const data = await fecthAllCategories() as Category;
+    // const data = await fecthAllCategories() as Category;
+    
+    // const test = data?.categoryCollection?.edges  || [];
 
-    const test = data?.categoryCollection?.edges || [];
+    const query = category?.user?.category?.edges  || [];
 
     const handleTags = (filter: string) => {
         router.push(`${pathName}?category=${filter}`);
-      };
+    };
 
     return (
     <section className='flexCenter flex-col max-w-10xl w-full mx-auto paddings'>
@@ -86,10 +102,10 @@ const ProfilePage = async ({ user }: Props) =>
 
         <section className='flexStart flex-col lg:mt-28 mt-16 w-full'>
             <p className="w-full text-left text-lg font-semibold">Recent Category Collection</p>
-                <div className='flexBetween w-full gap-5 flew-wrap'>
-                        <ul className='flex gap-2 overflow-auto'>
+                <div className='flexBetween w-full gap-5 flew-wrap mt-4'>
+                        <ul className='flex gap-2 overflow-auto pt-2'>
                             {
-                                test.map( ({node}: {node: CategoryInterface})  => (
+                                query.map(({node}: {node: CategoryInterface})  => (
 
                                     <Link href={`/edit-category/${node?.id}`}>
                                       
@@ -97,7 +113,7 @@ const ProfilePage = async ({ user }: Props) =>
                                             key={node?.id}
                                             type='button'
                                             onClick={() => handleTags(node?.title)}
-                                            className={`${category === node?.title ? 'bg-light-white-300 font-medium' : 'font-normal'} px-4 py-3 rounded-2xl capitalize whitespace-nowrap hover:bg-primary-purple hover:text-white`}
+                                            className={`${categoryy === node?.title ? 'bg-light-white-300 font-medium' : 'font-normal'} px-4 py-3 rounded-2xl capitalize whitespace-nowrap hover:bg-primary-purple hover:text-white`}
                                         >
                                             {node?.title}
                                         </button>
