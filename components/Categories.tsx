@@ -42,7 +42,7 @@ const Categories =  async () => {
                     key={node?.title}
                     type='button'
                     onClick={() => handleTags(node?.title)}
-                    className={`${category === node?.title ? 'bg-primary-purple text-white font-medium' : 'font-normal'} px-4 py-3 bg-light-white-400 rounded-lg capitalize whitespace-nowrap `}
+                    className={`${category === node?.title ? 'bg-light-white-300 font-medium' : 'font-normal'} px-4 py-3 rounded-lg capitalize whitespace-nowrap `}
                 >
                     {node?.title}
                 </button>
