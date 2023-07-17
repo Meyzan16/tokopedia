@@ -1,5 +1,5 @@
 import { ProjectForm,CategoryForm } from '@common.types';
-import { categoryQuery,getCategoryByIdQuery,updateCategoryMutation,deleteCategoryMutation, getCategoryOfUserQuery, createUserMutation,createCategoryMutation, getUserQuery, createProjectMutation, projectsQuery, getProjectByIdQuery, getProjectsOfUserQuery, deleteProjectMutation, updateProjectMutation } from '@graphql';
+import { categoryQuery,getCategoryByIdQuery,updateCategoryMutation,deleteCategoryMutation,projectsByCategoryQuery, getCategoryOfUserQuery, createUserMutation,createCategoryMutation, getUserQuery, createProjectMutation, projectsQuery, getProjectByIdQuery, getProjectsOfUserQuery, deleteProjectMutation, updateProjectMutation } from '@graphql';
 import  { GraphQLClient} from 'graphql-request';
 
 
@@ -106,9 +106,14 @@ export const createCategoryNew = async(form:CategoryForm, creatorId: string, tok
 
 
 // get all projects
-export const fetchAllProjects = async (category = "One Piece", endcursor:string) => {
+export const fetchAllProjects = async (category:string, endcursor:string) => {
     client.setHeader('x-api-key', apiKey);  
-    return makeGraphQLRequest(projectsQuery, {category,endcursor});
+    if(!category) {
+        const res = await makeGraphQLRequest(projectsQuery, {category,endcursor});
+        console.log("RESPONSE", res);
+        return await makeGraphQLRequest(projectsQuery, {category,endcursor});
+    }
+    return await makeGraphQLRequest(projectsByCategoryQuery, {category,endcursor});
 }
 
 

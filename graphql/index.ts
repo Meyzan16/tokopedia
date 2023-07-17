@@ -110,6 +110,37 @@ export const deleteCategoryMutation = `
 
 export const projectsQuery = `
   query getProjects($category: String, $endcursor: String) {
+    projectSearch(first: 10, after: $endcursor }) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      edges {
+        node {
+          title
+          genre
+          episode
+          description
+          liveSiteUrl
+          id
+          image
+          category
+          createdBy {
+            id
+            email
+            name
+            avatarUrl
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const projectsByCategoryQuery = `
+  query getProjects($category: String, $endcursor: String) {
     projectSearch(first: 10, after: $endcursor, filter: {category: {eq: $category} }) {
       pageInfo {
         hasNextPage
