@@ -113,7 +113,7 @@ const ProfilePage = async ({ user,category }: Props) =>
                                             key={node?.id}
                                             type='button'
                                             onClick={() => handleTags(node?.title)}
-                                            className={`${categoryy === node?.title ? 'bg-light-white-300 font-medium' : 'font-normal'} px-4 py-3 rounded-2xl capitalize whitespace-nowrap hover:bg-primary-purple hover:text-white`}
+                                            className={`${categoryy === node?.title ? 'bg-slate-500 font-medium' : 'font-normal'} px-4 py-3 rounded-2xl bg-light-white-400 capitalize whitespace-nowrap hover:bg-primary-purple hover:text-white`}
                                         >
                                             {node?.title}
                                         </button>
