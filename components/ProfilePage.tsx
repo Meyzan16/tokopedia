@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Button from "./Button";
 import ProjectCard from './ProjectCard';
 import { usePathname, useRouter , useSearchParams } from 'next/navigation';
+import { getCurrentUser } from '@lib/session';
 
 
 type Props = {
@@ -36,6 +37,8 @@ type CategoryUser = {
 
 const ProfilePage = async ({ user,category }: Props) => 
 {
+    const session = await getCurrentUser();
+
     const router = useRouter();
     const pathName = usePathname();
     const searchParams = useSearchParams();
@@ -100,6 +103,7 @@ const ProfilePage = async ({ user,category }: Props) =>
                 )}
         </section>
 
+        {session?.user?.email && (
         <section className='flexStart flex-col lg:mt-28 mt-16 w-full'>
             <p className="w-full text-left text-lg font-semibold">Recent Category Collection</p>
                 <div className='flexBetween w-full gap-5 flew-wrap mt-4'>
@@ -127,6 +131,8 @@ const ProfilePage = async ({ user,category }: Props) =>
                         </ul>
                 </div>
         </section>
+        )}
+
 
         <section className="flexStart flex-col lg:mt-12 mt-16 w-full">
             <p className="w-full text-left text-lg font-semibold">Recent Collection Anime</p>
