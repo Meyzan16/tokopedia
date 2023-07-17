@@ -176,13 +176,7 @@ const ProjectForm = ({type , session, project} : Props) => {
           leftIcon={submitting ? "" : '/plus.svg'}
           submitting={submitting}
         />
-        {
-          type === 'edit' && (
-            <Link href={`/project/${project?.id}`} className='flexCenter edit-action_btn hover:bg-red-600 hover:text-white'>
-              Back
-            </Link>
-          )
-        }
+       
 
       </div>
 

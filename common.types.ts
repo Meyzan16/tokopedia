@@ -37,12 +37,6 @@ export interface UserProfile {
     avatarUrl: string;
     category: {
       edges: { node: CategoryInterface }[];
-      pageInfo: {
-        hasPreviousPage: boolean;
-        hasNextPage: boolean;
-        startCursor: string;
-        endCursor: string;
-      };
     };
     projects: {
       edges: { node: ProjectInterface }[];

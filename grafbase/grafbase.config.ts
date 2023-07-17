@@ -6,7 +6,6 @@ const User = g.model('User', {
   email: g.string().unique(),
   avatarUrl: g.string(),
   description: g.string().optional(),
-  //@ts-ignore
   category: g.relation(() => Category).list().optional(),  
   //@ts-ignore
   projects: g.relation(() => Project).list().optional(),  

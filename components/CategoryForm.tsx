@@ -43,9 +43,8 @@ const CategoryForm = ({type , session, category} : Props) => {
       if(type === 'create') {
         //create a new category
         await createCategoryNew(form, session?.user?.id, token);
-        
-        router.push(`/profile/${session?.user?.id}`);
-        // router.push('/');
+      
+        router.push('/');
         toast.success(`a new collection successfully`);
       }
 
@@ -54,8 +53,6 @@ const CategoryForm = ({type , session, category} : Props) => {
         await updateCategory(form, category?.id as string, token);
 
         router.push('/');
-
-        // router.push('/');
         toast.success(`updated collection successfully`);
       }
 
@@ -104,13 +101,7 @@ const CategoryForm = ({type , session, category} : Props) => {
           leftIcon={submitting ? "" : '/plus.svg'}
           submitting={submitting}
         />
-        {
-          type === 'edit' && (
-            <Link href={`/project/${category?.id}`} className='flexCenter edit-action_btn hover:bg-red-600 hover:text-white'>
-              Back
-            </Link>
-          )
-        }
+       
 
       </div>
 

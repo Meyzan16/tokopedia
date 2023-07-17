@@ -15,7 +15,11 @@ const RelatedProjects = async ({userId, projectId} : Props) => {
     const result = await getUserProjects(userId) as {user?: UserProfile};
 
     const filteredProjects = result?.user?.projects?.edges?.
-      filter(({ node } : {node: ProjectInterface  } ) => node?.id !== projectId);
+      filter(
+        (
+          { node } : {node: ProjectInterface  } 
+        ) => node?.id !== projectId
+      );
 
 
       console.log(filteredProjects);

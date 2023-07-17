@@ -17,10 +17,7 @@ const EditProject = async ({params: {id}} : {params: {id:string}} ) => {
 
   const result = await getCategoryDetails(id) as {category?: CategoryInterface}
 
-  // const categoryDetails = result?.category;
-
-  // console.log(categoryDetails?.title);
-
+  const categoryDetails = result?.category;
 
   return (
 
@@ -28,12 +25,17 @@ const EditProject = async ({params: {id}} : {params: {id:string}} ) => {
         <section className="flexBetween gap-y-8 max-w-4xl  w-full">
                 <h3 className='modal-head-text'> Edit a collection </h3>
                 
-                <div className="flex justify-end items-center gap-2">
-                        <CategoryActions 
-                         category={result?.category}
-                        />
-                </div>
-                
+                {session?.user?.email === categoryDetails?.createdBy?.email && (
+                    <div className="flex justify-end items-center gap-2">
+                            <CategoryActions 
+                              category={result?.category}
+                            />
+                    </div>
+             
+                )}
+
+
+               
         </section>
 
 

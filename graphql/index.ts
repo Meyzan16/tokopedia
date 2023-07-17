@@ -244,6 +244,8 @@ export const getProjectsOfUserQuery = `
     }
   }
 `;
+
+
 export const getCategoryOfUserQuery = `
   query getUserCategory($id: ID!, $last: Int = 20) {
     user(by: { id: $id }) {

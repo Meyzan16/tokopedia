@@ -10,31 +10,18 @@ type Props = {
         id:string
     }
 }
-type CategoryUser = {
-    user : {
-        id:string;
-        name:string;
-        email:string;
-        category:{
-            edges: {node: CategoryInterface}[];
-        }
-    }
-}
+
 
 
 const UserProfile = async ({params}: Props) => {
     const result = await getUserProjects(params.id, 100) as {user: UserProfile};
-    const category = await getUserCategory(params.id, 100) as   CategoryUser;
 
-    // const query = category?.user?.category?.edges  || [];
-
-    // console.log(query);
 
     if(!result.user) {
         return <p className='no-result-text'>failed to fetch user info</p>
     }
     
-  return <ProfilePage user={result?.user} category={category} />
+   return <ProfilePage user={result?.user} userId={params.id} />
 }
 
 export default UserProfile

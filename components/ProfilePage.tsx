@@ -1,4 +1,4 @@
-"use client";
+
 
 import { ProjectInterface, UserProfile } from '@common.types'
 import Image from 'next/image';
@@ -7,54 +7,19 @@ import { CategoryInterface } from '@common.types';
 import Link from 'next/link';
 import Button from "./Button";
 import ProjectCard from './ProjectCard';
-import { usePathname, useRouter , useSearchParams } from 'next/navigation';
-import { getCurrentUser } from '@lib/session';
+import Categoryrecent from './Categoryrecent';
+
 
 
 type Props = {
     user: UserProfile;
-    category: CategoryUser;
-}
-
-// type Category = {
-//     categoryCollection: {
-//       edges: {node: CategoryInterface}[];
-//     }
-// }
-
-type CategoryUser = {
-    user : {
-        id:string;
-        name:string;
-        email:string;
-        category:{
-            edges: {node: CategoryInterface}[];
-        }
-    }
+    userId: string;
 }
   
-  
 
-const ProfilePage = async ({ user,category }: Props) => 
+const ProfilePage = async ({ user, userId }: Props) => 
 {
-    const session = await getCurrentUser();
-
-    const router = useRouter();
-    const pathName = usePathname();
-    const searchParams = useSearchParams();
-
-    const categoryy = searchParams.get("category");
-
-    // const data = await fecthAllCategories() as Category;
-    
-    // const test = data?.categoryCollection?.edges  || [];
-
-    const query = category?.user?.category?.edges  || [];
-
-    const handleTags = (filter: string) => {
-        router.push(`${pathName}?category=${filter}`);
-    };
-
+   
     return (
     <section className='flexCenter flex-col max-w-10xl w-full mx-auto paddings'>
         <section className="flexBetween max-lg:flex-col gap-10 w-full">
@@ -103,41 +68,12 @@ const ProfilePage = async ({ user,category }: Props) =>
                 )}
         </section>
 
-        {session?.user?.email && (
-        <section className='flexStart flex-col lg:mt-28 mt-16 w-full'>
-            <p className="w-full text-left text-lg font-semibold">Recent Category Collection</p>
-                <div className='flexBetween w-full gap-5 flew-wrap mt-4'>
-                        <ul className='flex gap-2 overflow-auto pt-2'>
-                            {
-                                query.map(({node}: {node: CategoryInterface})  => (
-
-                                    <Link href={`/edit-category/${node?.id}`}>
-                                      
-                                        <button
-                                            key={node?.id}
-                                            type='button'
-                                            onClick={() => handleTags(node?.title)}
-                                            className={`${categoryy === node?.title ? 'bg-slate-500 font-medium' : 'font-normal'} px-4 py-3 rounded-2xl bg-light-white-400 capitalize whitespace-nowrap hover:bg-primary-purple hover:text-white`}
-                                        >
-                                            {node?.title}
-                                        </button>
-                                    </Link>
-
-                                
-                                ))
-                            }
-
-                            
-                        </ul>
-                </div>
-        </section>
-        )}
-
+        <Categoryrecent 
+            userId={userId}
+        />
 
         <section className="flexStart flex-col lg:mt-12 mt-16 w-full">
             <p className="w-full text-left text-lg font-semibold">Recent Collection Anime</p>
-
-            
             
             <div className="profile_projects">
                     {user?.projects?.edges?.map(
