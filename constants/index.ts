@@ -8,6 +8,7 @@
     "Kingdom",
     "Arslan Senki",
     "Dearh note",
+    
     "Jujutsu keisen",
     "Demon slayer",
     "Hiromiya",
