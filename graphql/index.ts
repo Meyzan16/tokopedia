@@ -109,7 +109,7 @@ export const deleteCategoryMutation = `
 
 
 export const projectsQuery = `
-  query getProjects($category: String, $endcursor: String) {
+  query getProjects($endcursor: String) {
     projectSearch(first: 10, after: $endcursor }) {
       pageInfo {
         hasNextPage
